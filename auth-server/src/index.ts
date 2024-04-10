@@ -65,17 +65,21 @@ app.post("/login", async (req, res) => {
   }
 });
 
-// app.post("/logout", authenticateToken, async (req, res) => {
-//   const { address } = req.body;
+app.get("/user", authenticateToken, async (req, res) => {
+  const { email } = req.body;
+  try {
+    const user = Users.find((x) => x.email == email);
 
-//   try {
-//     const user = Users.find((x) => x.address == address);
-//     console.log({ user });
-//   } catch (error) {
-//     res.status(500).send("Internal error");
-//     console.log(error);
-//   }
-// });
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+
+    res.send({ user });
+  } catch (error) {
+    res.status(500).send("Internal error");
+    console.log(error);
+  }
+});
 
 app.get("/", async (req, res) => {
   try {

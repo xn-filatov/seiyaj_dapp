@@ -1,25 +1,19 @@
-import { useAccount, useReadContract } from "wagmi";
-import { abi } from "../../../../contracts/artifacts/contracts/SeiyajToken.sol/SeiyajToken.json";
-import { formatEther } from "viem";
+import { useAccount } from "wagmi";
 import "./Home.scss";
+import Send from "../../components/Send";
+import Burn from "../../components/Burn";
+import Balance from "../../components/Balance";
 
 export default function Home() {
   const { address, isConnected } = useAccount();
-
-  const { data: balance, isSuccess } = useReadContract({
-    address: import.meta.env.VITE_TOKEN_ADDRESS as `0x${string}`,
-    abi,
-    functionName: "balanceOf",
-    args: [address],
-  });
 
   return (
     <>
       {isConnected && (
         <div className="wrapper">
-          {/* <div className="white-box left">
+          <div className="white-box left">
             <img src="/ticket.png" />
-          </div> */}
+          </div>
 
           <div className="middle">
             <div className="middle-left">
@@ -35,12 +29,7 @@ export default function Home() {
                 <button className="btn-black arrow">→</button>
               </div>
 
-              <div className="white-box middle-left-bottom-left">
-                <p className="description">Outlet Wallet</p>
-                {isSuccess && <h3>{formatEther(balance as bigint)} SYT</h3>}
-                <button className="btn-black arrow">→</button>
-                <img src="/token_purple.png" />
-              </div>
+              <Balance />
 
               <div className="white-box middle-left-bottom-right">
                 <p className="description">Refer a friend</p>
@@ -87,21 +76,8 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="white-box">
-              <img src="/circles.png" />
-              <h3 className="label">Send SYT</h3>
-              <input type="text" placeholder="To..." />
-              <input type="number" placeholder="Amount..." />{" "}
-              <button className="btn-black">Send</button>
-            </div>
-
-            <div className="white-box">
-              <img src="/circles.png" />
-              <h3 className="label">Burn SYT</h3>
-
-              <input type="number" placeholder="Amount..." />
-              <button className="btn-black">Burn</button>
-            </div>
+            <Send />
+            <Burn />
           </div>
         </div>
       )}
