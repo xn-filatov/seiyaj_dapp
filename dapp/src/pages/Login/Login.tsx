@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../providers/AuthProvider";
+import { useAuth } from "../../providers/AuthProvider";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import "./Login.scss";
 
 export type User = {
   email?: string;
@@ -48,7 +49,7 @@ export default function Login() {
 
       <TabPanel>
         <div>
-          <form onSubmit={handleLogin}>
+          <form onSubmit={handleLogin} className="login-form">
             <label>
               Email: <input name="email" type="text" />
             </label>
@@ -61,7 +62,7 @@ export default function Login() {
       </TabPanel>
       <TabPanel>
         <div>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="login-form">
             <label>
               Email: <input name="email" type="text" />
             </label>

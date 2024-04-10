@@ -1,0 +1,33 @@
+.container {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  gap: 10px;
+  //   padding: 10px;
+
+  .layout-top {
+    grid-area: header;
+    padding-inline: 10px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 10px;
+    flex-flow: row wrap;
+    background-color: lightgray;
+
+    .logout-btn {
+      background-color: #ff5c3a;
+      padding-inline: 7px;
+      color: white;
+    }
+  }
+  .main {
+    grid-area: main;
+  }
+  .layout-bottom {
+    grid-area: footer;
+    // background-color: aqua;
+  }
+}

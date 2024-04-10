@@ -1,6 +1,6 @@
 import { createContext, useState, useContext } from "react";
 import { useCookies } from "react-cookie";
-import { User } from "../pages/Login";
+import { User } from "../pages/Login/Login";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 

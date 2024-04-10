@@ -1,0 +1,125 @@
+.wrapper {
+  display: grid;
+  grid-template-areas: "left middle right";
+
+  .btn-black {
+    background-color: black;
+    color: white;
+
+    padding: 4px;
+
+    &.arrow {
+      //   position: absolute;
+      //   bottom: 0;
+      //   right: 0;
+      padding: 0;
+      font-size: 30px;
+      border-radius: 20px;
+      width: 40px;
+      height: 40px;
+    }
+
+    &.copy {
+      padding: 0;
+      border-radius: 15px;
+      //   align-items: center;
+      padding-top: 5px;
+      border-radius: 20px;
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  .btn-green {
+    background-color: #94ed49;
+    padding: 3px;
+  }
+
+  .label {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 35px;
+    text-align: left;
+  }
+  .description {
+    color: #767676;
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 30px;
+    text-align: left;
+  }
+
+  .white-box {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 20px;
+  }
+
+  .black-box {
+    max-width: 506;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    padding: 30px;
+    background-color: black;
+
+    border-radius: 20px;
+
+    p {
+      text-align: center;
+      color: white;
+    }
+  }
+
+  .left {
+    grid-area: left;
+    align-self: end;
+  }
+
+  .middle {
+    grid-area: middle;
+
+    display: grid;
+    grid-template-areas:
+      "middle-left middle-right"
+      "middle-left middle-right";
+
+    .middle-left {
+      grid-area: middle-left;
+
+      display: grid;
+      grid-template-areas:
+        "wallet-setup wallet-setup"
+        "middle-left-bottom-left middle-left-bottom-right";
+
+      .wallet-setup {
+        grid-area: wallet-setup;
+        align-self: flex-end;
+        display: flex;
+        align-items: center;
+      }
+      .middle-left-bottom-left {
+        grid-area: middle-left-bottom-left;
+        align-self: flex-end;
+        height: 300px;
+      }
+      .middle-left-bottom-right {
+        grid-area: middle-left-bottom-right;
+        align-self: flex-end;
+        height: 300px;
+      }
+    }
+
+    .middle-right {
+      grid-area: middle-right;
+      align-self: flex-end;
+    }
+  }
+
+  .right {
+    grid-area: right;
+    // max-width: 10%;
+  }
+}

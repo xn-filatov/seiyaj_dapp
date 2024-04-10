@@ -1,10 +1,10 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
+import Home from "./pages/Home/Home";
+import Login from "./pages/Login/Login";
 import { AuthProvider } from "./providers/AuthProvider";
 import { RequireAuth } from "./components/RequireAuth";
-import Layout from "./components/Layout";
+import Layout from "./components/Layout/Layout";
 import { Web3Provider } from "./providers/Web3Provider";
 
 export default function App() {
