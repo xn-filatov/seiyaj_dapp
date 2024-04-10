@@ -8,7 +8,7 @@ const config = createConfig(
     // Your dApps chains
     chains: [polygonMumbai],
     // Required API Keys
-    walletConnectProjectId: "", //process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID,
+    walletConnectProjectId: "f4d09684cebacf3e6ccc5aeb38297f82", //process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID,
 
     // Required App Info
     appName: "App",

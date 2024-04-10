@@ -1,20 +1,30 @@
-import { useState } from "react";
-import { useWriteContract } from "wagmi";
+import { useEffect, useState } from "react";
+import { useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import { abi } from "../../../contracts/artifacts/contracts/SeiyajToken.sol/SeiyajToken.json";
+import useBalance from "../hooks/useBalance";
 
 export default function Send() {
   //   const { address, isConnected } = useAccount();
+  const { updateBalance } = useBalance();
   const [to, setTo] = useState<string | null>(null);
   const [amount, setAmount] = useState<number | null>(null);
-  const { writeContract } = useWriteContract();
+  const { writeContract, data: sendData } = useWriteContract();
+  const { isSuccess: isSendSuccess } = useWaitForTransactionReceipt({
+    hash: sendData,
+  });
+
+  useEffect(() => {
+    updateBalance();
+  }, [isSendSuccess]);
 
   const handleSend = () => {
-    writeContract({
-      address: import.meta.env.VITE_TOKEN_ADDRESS as `0x${string}`,
-      abi,
-      functionName: "transfer",
-      args: [to, BigInt(amount!)],
-    });
+    if (amount)
+      writeContract({
+        address: import.meta.env.VITE_TOKEN_ADDRESS as `0x${string}`,
+        abi,
+        functionName: "transfer",
+        args: [to, amount * 1e18],
+      });
   };
 
   return (

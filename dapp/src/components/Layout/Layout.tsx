@@ -2,32 +2,38 @@ import { Outlet } from "react-router-dom";
 import { useAuth } from "../../providers/AuthProvider";
 import { ConnectKitButton } from "connectkit";
 import "./Layout.scss";
-import { useAccount } from "wagmi";
+import { useAccount, useDisconnect } from "wagmi";
 
 export default function Layout() {
   const { user, logout } = useAuth();
   const { isDisconnected } = useAccount();
+  const { disconnect } = useDisconnect();
+
+  const handleLogout = () => {
+    disconnect();
+    logout();
+  };
+
   return (
     <div className="container">
       <div className="layout-top">
-        {user && (
-          <div>
-            <b>
-              Welcome{" "}
-              {user.name && user.name.length > 0 ? user.name : user.email}
-            </b>
-            {isDisconnected && (
-              <i style={{ marginLeft: "20px" }}>
-                Please connect your MM wallet
-              </i>
-            )}
+        <div className="navbar">
+          {user && (
+            <div>
+              <b style={{ color: "greenyellow" }}>Welcome {user.email}</b>
+              {isDisconnected && (
+                <i style={{ marginLeft: "20px" }}>
+                  Please connect your MM wallet
+                </i>
+              )}
+            </div>
+          )}
+          <div style={{ alignItems: "center", display: "flex", gap: "20px" }}>
+            <ConnectKitButton />
+            <button className="logout-btn" onClick={handleLogout}>
+              Log Out
+            </button>
           </div>
-        )}
-        <div style={{ alignItems: "center", display: "flex", gap: "20px" }}>
-          <ConnectKitButton />
-          <button className="logout-btn" onClick={logout}>
-            Log Out
-          </button>
         </div>
       </div>
 

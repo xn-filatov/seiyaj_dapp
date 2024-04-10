@@ -15,8 +15,9 @@ app.use(express.urlencoded({ extended: true }));
 type User = {
   email: string;
   password: string;
-  address?: string;
   name?: string;
+  birthdate?: string;
+  description?: string;
 };
 
 const Users: User[] = [];
@@ -75,6 +76,39 @@ app.get("/user", authenticateToken, async (req, res) => {
     }
 
     res.send({ user });
+  } catch (error) {
+    res.status(500).send("Internal error");
+    console.log(error);
+  }
+});
+
+app.post("/user", authenticateToken, async (req, res) => {
+  const { email, name, birthdate, description } = req.body;
+  try {
+    const user = Users.find((x) => x.email == email);
+
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+
+    user.email = email;
+    user.name = name;
+    user.birthdate = birthdate;
+    user.description = description;
+
+    res.send({ user });
+  } catch (error) {
+    res.status(500).send("Internal error");
+    console.log(error);
+  }
+});
+
+app.post("/forgot", async (req, res) => {
+  const { email } = req.body;
+  console.log(`Sending new password to ${email}`);
+
+  try {
+    res.send("Email with a new password was successfully sent");
   } catch (error) {
     res.status(500).send("Internal error");
     console.log(error);
