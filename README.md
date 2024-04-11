@@ -22,7 +22,7 @@ Before running the solution make sure you have installed:
 
 1. Node v18.18.0
 2. Yarn package manager
-3. If you have yarn installed run `yarn install` to install the dependencies 
+3. If you have yarn installed run `yarn install` from `auth-server`, `contracts`and `dapp` folders to install dependencies 
 
 ## Deploying the Smart contract
 
