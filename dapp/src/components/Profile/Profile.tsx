@@ -1,6 +1,7 @@
 import axios from "axios";
-import { useAuth } from "../providers/AuthProvider";
+import { useAuth } from "../../providers/AuthProvider";
 import { useCookies } from "react-cookie";
+import "./Profile.scss";
 
 export default function Profile() {
   const { user } = useAuth();
@@ -29,28 +30,20 @@ export default function Profile() {
   return (
     user && (
       <div className="middle-right">
-        <div className="black-box">
+        <div className="profile">
           <img src="/id_card.png" />
-          <form onSubmit={handleSave} className="login-form">
-            <label>
-              Name: <input name="name" type="text" defaultValue={user.name} />
-            </label>
-            <label>
-              Birthdate:{" "}
-              <input
-                name="birthdate"
-                type="text"
-                defaultValue={user.birthdate}
-              />
-            </label>
-            <label>
-              Description:{" "}
-              <input
-                name="description"
-                type="text"
-                defaultValue={user.description}
-              />
-            </label>
+          <form onSubmit={handleSave} className="profile-form">
+            <label>Name:</label>
+            <input name="name" type="text" defaultValue={user.name} />
+            <label>Birthdate: </label>
+            <input name="birthdate" type="text" defaultValue={user.birthdate} />
+            <label>Description:</label>
+            <textarea
+              name="description"
+              defaultValue={user.description}
+              rows={10}
+              cols={50}
+            />
             <button type="submit" className="btn-green">
               Save
             </button>

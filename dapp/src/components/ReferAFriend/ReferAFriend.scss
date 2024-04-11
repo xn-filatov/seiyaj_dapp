@@ -1,0 +1,35 @@
+.refer-friend {
+  grid-area: refer-friend;
+  //   margin-bottom: 0 !important;
+  display: flex;
+  padding-bottom: 0 !important;
+
+  padding-left: 0 !important;
+
+  //   .label {
+  //     // align-self: self-start;
+  //     margin: 0;
+  //     padding: 0;
+  //   }
+  //   .description {
+  //     // align-self: self-start;
+  //     margin: 0;
+  //     padding: 0;
+  //   }
+
+  .refer-body {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    img {
+      align-self: end;
+
+      border-radius: 1px 1px 1px 20px;
+    }
+
+    button {
+      margin-left: 30px;
+      margin-bottom: 10px;
+    }
+  }
+}

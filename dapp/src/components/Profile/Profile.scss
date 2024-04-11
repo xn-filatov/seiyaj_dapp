@@ -1,0 +1,43 @@
+.profile {
+  .profile-form {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+
+  margin: 10px;
+  padding: 30px;
+  background-color: black;
+  border-radius: 20px;
+  color: greenyellow;
+
+  label {
+    margin-top: 10px;
+  }
+
+  input {
+    height: 15px;
+  }
+  input,
+  textarea {
+    border-radius: 5px;
+    background-color: greenyellow;
+    color: black;
+    border: none;
+    overflow: "hidden";
+    padding: 5px;
+    resize: none;
+  }
+  img {
+    max-width: 300px;
+    max-height: 300px;
+    margin-bottom: 40px;
+  }
+
+  .btn-green {
+    background-color: greenyellow;
+    margin-top: 80px;
+    align-self: flex-end;
+    padding-block: 10px;
+  }
+}
