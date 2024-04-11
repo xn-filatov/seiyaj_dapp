@@ -18,9 +18,6 @@ export default function Home() {
     <>
       {isConnected && (
         <div className="wrapper">
-          <div className="white-box corner left">
-            <img src="/ticket.png" />
-          </div>
           <LeftCorner />
           <div className="middle">
             <div className="middle-left">
