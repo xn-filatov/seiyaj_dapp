@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "container:up": "docker compose -f docker-compose.yml up -d",
+    "container:down": "docker-compose down --rmi all"
+  }
+}
