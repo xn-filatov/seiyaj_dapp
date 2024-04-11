@@ -3,6 +3,7 @@ import { useCookies } from "react-cookie";
 import { User } from "../pages/Login/Login";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 interface AuthContextType {
   user: User | null;
@@ -28,7 +29,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
         return res;
       })
-      .catch(console.log);
+      .catch((e) => {
+        toast.error(e.response.data);
+        throw e;
+      });
   };
 
   const login = async (newUser: User) => {
@@ -40,7 +44,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         setUser(res.data.user);
         return res;
       })
-      .catch(console.log);
+      .catch((e) => {
+        toast.error(e.response.data);
+        throw e;
+      });
   };
 
   const getUser = async () => {
@@ -53,6 +60,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         return res;
       })
       .catch((e) => {
+        toast.error(e.response.data);
         removeCookie("token");
         throw e;
       });

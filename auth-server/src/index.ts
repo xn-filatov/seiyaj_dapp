@@ -105,9 +105,15 @@ app.post("/user", authenticateToken, async (req, res) => {
 
 app.post("/forgot", async (req, res) => {
   const { email } = req.body;
-  console.log(`Sending new password to ${email}`);
-
   try {
+    const user = Users.find((x) => x.email == email);
+
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+
+    console.log(`Sending new password to ${email}`);
+
     res.send("Email with a new password was successfully sent");
   } catch (error) {
     res.status(500).send("Internal error");

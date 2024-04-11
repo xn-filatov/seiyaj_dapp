@@ -35,7 +35,7 @@ export default function Send() {
       writeContract({
         address: import.meta.env.VITE_TOKEN_ADDRESS as `0x${string}`,
         abi,
-        functionName: "transfer",
+        functionName: "safeTransfer",
         args: [to, amount * 1e18],
       });
   };

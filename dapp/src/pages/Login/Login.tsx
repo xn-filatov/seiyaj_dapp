@@ -5,6 +5,7 @@ import "react-tabs/style/react-tabs.css";
 import "./Login.scss";
 import axios from "axios";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export type User = {
   email: string;
@@ -20,8 +21,6 @@ export default function Login() {
 
   const [isEmailSent, setIsEmailSent] = useState<boolean>(false);
 
-  //   const from = location.state?.from?.pathname || "/";
-
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -30,8 +29,7 @@ export default function Login() {
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
 
-    await auth.signin({ name, email, password });
-    navigate("/");
+    await auth.signin({ name, email, password }).then(() => navigate("/"));
   };
 
   const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -41,8 +39,7 @@ export default function Login() {
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
 
-    await auth.login({ email, password });
-    navigate("/");
+    await auth.login({ email, password }).then(() => navigate("/"));
   };
 
   const handleForgotPassword = async (
@@ -60,7 +57,10 @@ export default function Login() {
       .then(() => {
         setIsEmailSent(true);
       })
-      .catch(console.log);
+      .catch((e) => {
+        toast.error(e.response.data);
+        throw e;
+      });
   };
 
   return (
