@@ -48,7 +48,7 @@ export default function Profile() {
               name="description"
               defaultValue={user.description}
               rows={10}
-              cols={50}
+              cols={40}
             />
             <button type="submit" className="btn-green">
               Save

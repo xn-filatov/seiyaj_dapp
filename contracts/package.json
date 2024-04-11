@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "deploy": "npx hardhat ignition deploy ./ignition/modules/SeiyajToken.ts --network mumbai"
+  },
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",
     "@nomicfoundation/hardhat-ethers": "^3.0.0",

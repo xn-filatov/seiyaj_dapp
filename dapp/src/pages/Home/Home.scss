@@ -1,7 +1,6 @@
 .wrapper {
   display: grid;
   grid-template-areas: "left middle right";
-
   .btn-black {
     background-color: black;
     color: white;
@@ -103,6 +102,7 @@
 
     .middle-right {
       grid-area: middle-right;
+      max-width: 400px;
     }
   }
 

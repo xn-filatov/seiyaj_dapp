@@ -16,8 +16,14 @@ contract SeiyajToken is ERC20, Ownable {
         _mint(account, value);
     }
 
-    function burn(address account, uint256 value) external onlyOwner {
-        _burn(account, value);
-        (account, value);
+    function safeTransfer(address to, uint256 value) external {
+        require(balanceOf(msg.sender) >= value, "Insufficient balance");
+
+        transfer(to, value);
+    }
+
+    function burn(uint256 value) external {
+        require(balanceOf(msg.sender) >= value, "Insufficient balance");
+        _burn(msg.sender, value);
     }
 }
