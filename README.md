@@ -1,5 +1,6 @@
 # Seiyaj Tech Coding Challenge
 This project is the assignment task provided by Seiyaj Tech ream.
+Public domain: https://seiyajchallenge.ro9.ru/
 
 The repo contains the following modules:
 1. `Authentication server` - the server that provides User data and Authentication (user data is stored in memory mock storage instead of DB)
@@ -56,7 +57,17 @@ Inside `.env` set the following variables:
 2. Run `yarn start` to start the server.
 3. Run `yarn start:dev` to start the server in dev mode.
 
-## Setting up the Dapp
+## Dapp
+The Dapp provides a user abilities to interact with SeiyajToken smart contract.
+
+### Key Features
+
+1. Off-chain User profile with JWT token authentication with 1 hour expiration
+2. Web3 wallets support including Wallet Connect and Metamask
+3. "Success" and "Error" notifications
+4. Real time SeiyajToken balance update
+5. Sending and Burning tokens
+6. Minting tokens function available for contract owner only 
 
 ### Configuration
 
@@ -80,7 +91,7 @@ This application defines the following routes:
 
 Before running the solution as a Docker container you must have:
 
-1. Set up  the `.env` files for the Dapp and Authentication server
+1. Set up  the `.env` files for the Dapp and Authentication server (for Docker image use the default values)
 2. Installed NodeJS and Yarn
 3. Docker installed on your computer
 
