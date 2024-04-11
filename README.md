@@ -1,10 +1,18 @@
 # Seiyaj Tech Coding Challenge
+This project is the assignment task provided by Seiyaj Tech ream.
+
+The repo contains the following modules:
+1. `Authentication server` - the server that provides User data and Authentication (user data is stored in memory mock storage instead of DB)
+2. `Contracts` - SeiyajToken ERC20 smart contract and Hardhat environment for testing and deploying (using Polygon Mumbai by default)
+3. `Dapp` - the web application used to interact with the Blockchain
 
 ## Table of Contents
 
 - [Prerequisites](#prerequisites)
-- [Deploying the Smart contarct](#deploying-the-defaultnft)
-- [Setting up the gasless minting web-service](#setting-up-the-gasless-minting-web-service)
+- [Deploying the Smart contract](#deploying-the-smart-contract)
+- [Setting up the Authentication server](#setting-up-the-authentication-server)
+- [Setting up the Dapp](#setting-up-the-dapp)
+- [Docker](#docker)
 - [Contributing](#contributing)
 
 ## Prerequisites
@@ -12,14 +20,14 @@
 Before running the solution make sure you have installed:
 
 1. Node v18.18.0
-2. yarn package manager
+2. Yarn package manager
 3. If you have yarn installed run `yarn install` to install the dependencies 
 
-## Deploying the Smart contarct
+## Deploying the Smart contract
 
 ### Configuration
 
-Inside `contracts` folder copy the `.env.example` file and rename it to `.env`.
+Inside the `contracts` folder copy the `.env.example` file and rename it to `.env`.
 Inside `.env` set the `DEPLOYER_KEY` variable, this private key will be used to deploy the smart contract 
 
 ### Deployment and testing
@@ -29,14 +37,14 @@ Inside `.env` set the `DEPLOYER_KEY` variable, this private key will be used to 
 3. Run `yarn test` to test the contract.
 4. Run `yarn deploy` to deploy the contract to Polygon Mumbai testnet. In the console you will see the message: `<CONTRACT_NAME> - <CONTARCT_ADDRESS>`.
 
-### ⚠️ Warning: If redployment causes `[ SeiyajTokenModule ] reconciliation failed ` error try executing `npx hardhat clean` and remove `./ignition/deployments` folder
+### ⚠️ Warning: If redeployment causes `[ SeiyajTokenModule ] reconciliation failed ` error try executing `npx hardhat clean` and remove `./ignition/deployments` folder
 ### ⚠️ Warning: If you have deployed a modified smart contract copy the `./contracts/artifacts/contracts/SeiyajToken.sol/SeiyajToken.json` file to `./dapp/src/` folder, so the Dapp can handle the modifications
 
 ## Setting up the Authentication server
 
 ### Configuration
 
-Inside `auth-server` folder copy the `.env.example` file and rename it to `.env`.
+Inside the `auth-server` folder copy the `.env.example` file and rename it to `.env`.
 Inside `.env` set the following variables:
 
 1.  `PORT` - the port the the web-service will use (8080 by default)
@@ -52,13 +60,13 @@ Inside `.env` set the following variables:
 
 ### Configuration
 
-Inside `dapp` folder copy the `.env.example` file and rename it to `.env`.
+Inside the `dapp` folder copy the `.env.example` file and rename it to `.env`.
 Inside `.env` set the following variables:
 
 1.  `VITE_BACKEND_URL` - the authentication server URL
 2.  `VITE_TOKEN_ADDRESS` - ERC20 token address from any chain.
 
-### Running and testing the web-service
+### Running and testing the dapp
 
 1. In your terminal open the `dapp` folder.
 2. Run `yarn dev` to start the dapp in dev mode.
@@ -70,10 +78,10 @@ This application defines the following routes:
 ## Docker
 ### Prerequisites
 
-Before running the solution as a Docker cintainer you must have:
+Before running the solution as a Docker container you must have:
 
-1. Installed dependencies with `yarn install` 
-2. Set up  the `.env` files for the Dapp and Authentication server
+1. Set up  the `.env` files for the Dapp and Authentication server
+2. Installed NodeJS and Yarn
 3. Docker installed on your computer
 
 ### Running in Docker
@@ -93,3 +101,5 @@ If you'd like to contribute to this project, please follow these steps:
 5. Create a pull request to merge your changes into the main repository.
 
 Please ensure your code follows the project's coding style and conventions.
+
+
