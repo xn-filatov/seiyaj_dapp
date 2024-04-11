@@ -2,6 +2,7 @@ import axios from "axios";
 import { useAuth } from "../../providers/AuthProvider";
 import { useCookies } from "react-cookie";
 import "./Profile.scss";
+import { toast } from "react-toastify";
 
 export default function Profile() {
   const { user } = useAuth();
@@ -23,8 +24,13 @@ export default function Profile() {
           headers: { Authorization: `Bearer ${cookie.token}` },
         }
       )
-      .then(() => {})
-      .catch(console.log);
+      .then(() => {
+        toast("Your profile changes were saved");
+      })
+      .catch((e) => {
+        console.log(e);
+        toast.error("Error!");
+      });
   };
 
   return (

@@ -7,13 +7,18 @@ import {
 } from "wagmi";
 import { abi } from "../SeiyajToken.json";
 import useBalance from "../hooks/useBalance";
+import { toast } from "react-toastify";
 
 export default function Mint() {
   const { address } = useAccount();
   const { updateBalance } = useBalance();
   const [to, setTo] = useState<string | null>(null);
   const [amount, setAmount] = useState<number | null>(null);
-  const { writeContract, data: mintData } = useWriteContract();
+  const {
+    writeContract,
+    data: mintData,
+    error: mintError,
+  } = useWriteContract();
   const { isSuccess: isMintSuccess } = useWaitForTransactionReceipt({
     hash: mintData,
   });
@@ -24,8 +29,17 @@ export default function Mint() {
   });
 
   useEffect(() => {
-    updateBalance();
+    if (isMintSuccess) {
+      toast("Your tokens were minted successfully");
+      updateBalance();
+    }
   }, [isMintSuccess]);
+
+  useEffect(() => {
+    if (mintError) {
+      toast.error(mintError.message);
+    }
+  }, [mintError]);
 
   const handleMint = () => {
     if (amount)

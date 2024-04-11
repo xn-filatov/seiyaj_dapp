@@ -6,19 +6,33 @@ import {
 } from "wagmi";
 import { abi } from "../SeiyajToken.json";
 import useBalance from "../hooks/useBalance";
+import { toast } from "react-toastify";
 
 export default function Burn() {
   const { address } = useAccount();
   const { updateBalance } = useBalance();
   const [amount, setAmount] = useState<number | null>(null);
-  const { writeContract, data: burnData } = useWriteContract();
+  const {
+    writeContract,
+    data: burnData,
+    error: burnError,
+  } = useWriteContract();
   const { isSuccess: isBurnSuccess } = useWaitForTransactionReceipt({
     hash: burnData,
   });
 
   useEffect(() => {
-    updateBalance();
+    if (isBurnSuccess) {
+      toast("Your tokens were burnt successfully");
+      updateBalance();
+    }
   }, [isBurnSuccess]);
+
+  useEffect(() => {
+    if (burnError) {
+      toast.error(burnError.message);
+    }
+  }, [burnError]);
 
   const handleBurn = () => {
     if (amount)

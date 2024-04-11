@@ -2,20 +2,33 @@ import { useEffect, useState } from "react";
 import { useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import { abi } from "../SeiyajToken.json";
 import useBalance from "../hooks/useBalance";
+import { toast } from "react-toastify";
 
 export default function Send() {
-  //   const { address, isConnected } = useAccount();
   const { updateBalance } = useBalance();
   const [to, setTo] = useState<string | null>(null);
   const [amount, setAmount] = useState<number | null>(null);
-  const { writeContract, data: sendData } = useWriteContract();
+  const {
+    writeContract,
+    data: sendData,
+    error: sendError,
+  } = useWriteContract();
   const { isSuccess: isSendSuccess } = useWaitForTransactionReceipt({
     hash: sendData,
   });
 
   useEffect(() => {
-    updateBalance();
+    if (isSendSuccess) {
+      toast("Your tokens were sent successfully");
+      updateBalance();
+    }
   }, [isSendSuccess]);
+
+  useEffect(() => {
+    if (sendError) {
+      toast.error(sendError.message);
+    }
+  }, [sendError]);
 
   const handleSend = () => {
     if (amount)
@@ -40,7 +53,7 @@ export default function Send() {
         onChange={(e) => setAmount(parseFloat(e.target.value))}
         type="number"
         placeholder="Amount..."
-      />{" "}
+      />
       <button
         onClick={handleSend}
         disabled={!to || !amount}
