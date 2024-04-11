@@ -1,15 +1,10 @@
 import { useEffect, useState } from "react";
-import {
-  useAccount,
-  useWaitForTransactionReceipt,
-  useWriteContract,
-} from "wagmi";
+import { useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import { abi } from "../SeiyajToken.json";
 import useBalance from "../hooks/useBalance";
 import { toast } from "react-toastify";
 
 export default function Burn() {
-  const { address } = useAccount();
   const { updateBalance } = useBalance();
   const [amount, setAmount] = useState<number | null>(null);
   const {
@@ -40,7 +35,7 @@ export default function Burn() {
         address: import.meta.env.VITE_TOKEN_ADDRESS as `0x${string}`,
         abi,
         functionName: "burn",
-        args: [address, amount * 1e18],
+        args: [amount * 1e18],
       });
   };
 

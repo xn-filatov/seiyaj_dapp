@@ -9,7 +9,6 @@ import ReferAFriend from "../../components/ReferAFriend/ReferAFriend";
 import "./Home.scss";
 import LeftCorner from "../../components/LeftCorner";
 import WalletSetup from "../../components/WalletSetup";
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Home() {
@@ -37,18 +36,6 @@ export default function Home() {
             <Send />
             <Burn />
           </div>
-          <ToastContainer
-            position="top-center"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="light"
-          />
         </div>
       )}
     </>

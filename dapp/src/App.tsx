@@ -6,6 +6,7 @@ import { AuthProvider } from "./providers/AuthProvider";
 import { RequireAuth } from "./components/RequireAuth";
 import Layout from "./components/Layout/Layout";
 import { Web3Provider } from "./providers/Web3Provider";
+import { ToastContainer } from "react-toastify";
 
 export default function App() {
   return (
@@ -23,7 +24,19 @@ export default function App() {
               }
             />
           </Route>
-        </Routes>
+        </Routes>{" "}
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </Web3Provider>
     </AuthProvider>
   );
