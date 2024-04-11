@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useWaitForTransactionReceipt, useWriteContract } from "wagmi";
-import { abi } from "../../../contracts/artifacts/contracts/SeiyajToken.sol/SeiyajToken.json";
+import { abi } from "../SeiyajToken.json";
 import useBalance from "../hooks/useBalance";
 
 export default function Send() {

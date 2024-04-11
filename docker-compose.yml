@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  dapp:
+    container_name: dapp
+    build: ./dapp
+    ports:
+      - 3000:3000
+    # environment:
+      # VITE_BACKEND_URL: http://localhost:9090
+      # VITE_TOKEN_ADDRESS: 0xcFeb876aB804e1Ce5317fec0d7E458196d2FAE7b
+    networks:
+      - pg_network
+
+  auth-server:
+    container_name: auth-server
+    build: ./auth-server
+    ports:
+      - 8080:8080
+    # environment:
+      # PORT: 8080
+      # TOKEN_SECRET: secret
+    networks:
+      - pg_network
+
+networks:
+  pg_network:
+    driver: bridge

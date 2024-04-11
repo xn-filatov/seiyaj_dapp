@@ -1,5 +1,5 @@
 import { useAccount, useReadContract } from "wagmi";
-import { abi } from "../../../contracts/artifacts/contracts/SeiyajToken.sol/SeiyajToken.json";
+import { abi } from "../SeiyajToken.json";
 import { formatEther } from "viem";
 
 export default function useBalance(): {

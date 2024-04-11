@@ -64,49 +64,51 @@ export default function Login() {
   };
 
   return (
-    <Tabs>
-      <TabList>
-        <Tab>Log In</Tab>
-        <Tab>Sign Up</Tab>
-        <Tab>Forgot password</Tab>
-      </TabList>
+    <div className="login-page">
+      <Tabs>
+        <TabList>
+          <Tab>Log In</Tab>
+          <Tab>Sign Up</Tab>
+          <Tab>Forgot password</Tab>
+        </TabList>
 
-      <TabPanel>
-        <form onSubmit={handleLogin} className="login-form">
-          <label>
-            Email: <input name="email" type="text" />
-          </label>
-          <label>
-            Password: <input name="password" type="text" />
-          </label>
-          <button type="submit">Log In</button>
-        </form>
-      </TabPanel>
-      <TabPanel>
-        <form onSubmit={handleSubmit} className="login-form">
-          <label>
-            Email: <input name="email" type="text" />
-          </label>
-          <label>
-            Password: <input name="password" type="text" />
-          </label>
-          <label>
-            Name: <input name="name" type="text" />
-          </label>
-          <button type="submit">Sign Up</button>
-        </form>
-      </TabPanel>
-      <TabPanel>
-        {(!isEmailSent && (
-          <form onSubmit={handleForgotPassword} className="login-form">
+        <TabPanel>
+          <form onSubmit={handleLogin} className="login-form">
             <label>
               Email: <input name="email" type="text" />
             </label>
-
+            <label>
+              Password: <input name="password" type="text" />
+            </label>
+            <button type="submit">Log In</button>
+          </form>
+        </TabPanel>
+        <TabPanel>
+          <form onSubmit={handleSubmit} className="login-form">
+            <label>
+              Email: <input name="email" type="text" />
+            </label>
+            <label>
+              Password: <input name="password" type="text" />
+            </label>
+            <label>
+              Name: <input name="name" type="text" />
+            </label>
             <button type="submit">Sign Up</button>
           </form>
-        )) || <h2>Email with a new password was successfully sent</h2>}
-      </TabPanel>
-    </Tabs>
+        </TabPanel>
+        <TabPanel>
+          {(!isEmailSent && (
+            <form onSubmit={handleForgotPassword} className="login-form">
+              <label>
+                Email: <input name="email" type="text" />
+              </label>
+
+              <button type="submit">Request</button>
+            </form>
+          )) || <h2>Email with a new password was successfully sent</h2>}
+        </TabPanel>
+      </Tabs>
+    </div>
   );
 }
