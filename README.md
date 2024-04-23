@@ -1,6 +1,4 @@
-# Seiyaj Tech Coding Challenge
-This project is the assignment task provided by Seiyaj Tech ream.
-Public domain: https://seiyajchallenge.ro9.ru/
+# README
 
 The repo contains the following modules:
 1. `Authentication server` - the server that provides User data and Authentication (user data is stored in memory mock storage instead of DB)
